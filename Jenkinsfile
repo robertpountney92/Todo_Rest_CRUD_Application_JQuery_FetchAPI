@@ -16,9 +16,11 @@ pipeline {
 
         stage('Build Infrastructure') {
             steps {
-                sh 'cd terraform'
-                sh 'terraform init'
-                sh 'terraform apply -y'
+                dir('terraform') {
+                    sh 'cd terraform'
+                    sh 'terraform init'
+                    sh 'terraform apply -y'
+                }
             }
         }
         stage('Configure App Server') {
