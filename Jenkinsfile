@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node:6.3' } }
+    agent { docker { image 'robertpountney71/terraforrm-ansible' } }
     stages {
         
         stage('Test') {
@@ -7,6 +7,13 @@ pipeline {
                 sh 'echo "Perform some tests here"'
             }
         }
+
+        stage('Jenkins setup') {
+            steps {
+                sh 'echo "Perform some tests here"'
+            }
+        }
+
         stage('Build Infrastructure') {
             steps {
                 sh 'cd terraform'
@@ -14,7 +21,7 @@ pipeline {
                 sh 'terraform apply -y'
             }
         }
-        stage('Configure Server') {
+        stage('Configure App Server') {
             steps {
                 sh 'cd ansible'
                 sh 'ansible-playbook -i hosts setup.yml'
