@@ -27,9 +27,6 @@ pipeline {
             }
             steps {
                 dir('terraform') {
-                    
-                    sh 'terraform init'
-                    
                     withCredentials(
                         [sshUserPrivateKey(
                             credentialsId: 'ROB-PRIVATE-KEY', 
@@ -42,6 +39,7 @@ pipeline {
                             accessKeyVariable: 'TF_VAR_access_key',
                             secretKeyVariable: 'TF_VAR_secret_key'
                         ]]) {
+                            sh 'terraform init'
                             sh 'terraform plan'
                             sh 'terraform apply --auto-approve'
                         }

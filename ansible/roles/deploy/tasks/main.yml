@@ -22,8 +22,6 @@
     src: '{{ playbook_dir }}/roles/deploy/tasks/todo_app.service'
     dest: /etc/systemd/system 
 
-
-
 - name: Run application
   systemd:
     name: todo_app
