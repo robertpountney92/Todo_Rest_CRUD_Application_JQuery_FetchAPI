@@ -102,7 +102,7 @@ resource "aws_instance" "web" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update -y",
-      "sleep 10"
+      "sleep 10",
       "sudo apt-get install python -y",
     ]
   }
