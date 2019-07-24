@@ -39,7 +39,7 @@ pipeline {
                             accessKeyVariable: 'TF_VAR_access_key',
                             secretKeyVariable: 'TF_VAR_secret_key'
                         ]]) {
-                            sh 'terraform init'
+                            sh 'terraform init -backend-config="access_key=${TF_VAR_access_key}" -backend-config="secret_key=${TF_VAR_secret_key}"'
                             sh 'terraform plan'
                             sh 'terraform apply --auto-approve'
                         }
