@@ -102,6 +102,7 @@ resource "aws_instance" "web" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update -y",
+      "sudo apt-get intsall python",
     ]
   }
   connection {
